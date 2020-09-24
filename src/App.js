@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('...');
 
   useEffect(() => {
-    fetch('/api/dj_http?name=Django')
-      .then(res => res.text())
-      .then(html => {
-        setMessage(html);
+    fetch("/api/blog/greeting/?name=Django")
+      .then((res) => res.json())
+      .then(json => {
+        setMessage(json.message);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, []);
