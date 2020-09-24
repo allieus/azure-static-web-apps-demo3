@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('/api/dj_http', { qs: { name: 'Django' } })
+    fetch('/api/dj_http?name=Django')
       .then(res => res.text())
       .then(html => {
         setMessage(html);
